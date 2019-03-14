@@ -1,0 +1,65 @@
+package com.Lyubomyr;
+
+import java.io.Console;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
+public class Seven {
+    public static void main(String[] args) {
+
+        List<String> s = new ArrayList<>();
+        List<Integer> arr = new ArrayList<>();
+        int allMemory = 360;
+        int max = 32;
+        int i = 0;
+        int area;
+        Random random = new Random();
+        String name = "name_";
+        while(allMemory > 18){
+            area = random.nextInt(15);
+            if(allMemory > max - area){
+                area=max-area;
+                s.add(name + i);
+               // System.out.println(name+i);
+                arr.add(area);
+                allMemory = allMemory - area;
+                i++;
+            } else {
+                break;
+            }
+        }
+        arr.add(allMemory);
+        s.add(null);
+
+        s.set(0,null);
+        s.set(3,null);
+        s.set(9,null);
+        s.set(2,null);
+        for(int r = 0; r < 4; r++){
+            area = random.nextInt(15);
+            area = max - area;
+            for(int j = 0; j < s.size();j++){
+                if(s.get(j) == null && arr.get(j) >= area){
+                    arr.set(j,area);
+                    s.set(j, name + j);
+                    System.out.println("arr " + arr.get(j) + " s " + s.get(j) );
+                    break;
+                }
+            }
+        }
+
+
+        for (String str: s){
+            System.out.println(str);
+        }
+
+        for (Integer a: arr){
+            System.out.println(a);
+        }
+
+
+    }
+
+}
