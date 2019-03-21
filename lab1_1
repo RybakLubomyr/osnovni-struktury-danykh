@@ -29,12 +29,12 @@ int main() {
   int S2 = 0;
   int b = 0;
   int c = 0;
-  char tak = 'n';
+  char outSide = 'n';
   float dx1,dy1,dx,dy;
   float S;
   
   for(int i = 0; i < 5; i++){
-    if(tak != 'n'){
+    if(outSide != 'n'){
         break;
       }
     b++;
@@ -56,7 +56,7 @@ int main() {
 
       S = dx1 * dy - dx * dy1;
       if(S<=0){
-        tak = 'y';
+        outSide = 'y';
         cout<<"2 Багатокутник Не лежить строго в середині 1"<<endl;
         break;
       }
@@ -66,7 +66,7 @@ int main() {
   }
   S1 = S1/2;
   S2 = S2/2;
-  if(tak == 'n'){
+  if(outSide == 'n'){
       cout<<"2 Багатокутник строго лежить в середині 1"<<endl;
   }
   cout<<"S1: "<<S1<<endl;
