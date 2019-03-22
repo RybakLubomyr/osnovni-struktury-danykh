@@ -1,0 +1,57 @@
+
+#include <iostream>
+#include <cstdlib>
+
+#define N 10
+
+using namespace std;
+int main() {
+  int arr[N];
+  int vr;
+  for(int i=0; i < N;i++){
+    arr[i] = rand() % N;
+    cout<<arr[i]<<endl;
+  }
+  /* //Бульбашка
+  for(int j = 0; j < N - 1; j++){
+   for(int u = 0; u < N - 1; u++){
+      if (arr[u] > arr[u + 1]) { 
+        vr = arr[u];        
+        arr[u] = arr[u + 1];  
+        arr[u + 1] = vr;   
+        cout<<arr[u]<<" "<< arr[u + 1] << endl; 
+      } 
+    }
+  }
+  */ //Вибором
+  /*int tmp;
+  int min;
+  for(int i = 0; i < N; i++){
+    min = arr[i];
+    for(int j = i + 1; j < N; j++){
+      if(arr[j] < min){ 
+        min = arr[j];
+        tmp = j;
+      }
+    }
+    if(min != arr[i]){
+      arr[tmp] = arr[i];
+      arr[i] = min;
+      cout<<arr[i]<<" "<<arr[tmp]<<endl;
+    }
+  }*/
+ //Включенням
+for (int i = 1; i < N; ++i){
+int value = arr[i];
+int j = i - 1;
+  for (;j >= 0 && arr[j] > value; --j){
+    cout<<arr[j]<<" "<<arr[j+1]<<endl;
+    arr[j + 1] = arr[j];
+  }
+  arr[j + 1] = value; 
+}
+
+  for(int b =0; b < N; b++){
+    cout<<arr[b]<<endl;
+  }
+}
