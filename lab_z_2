@@ -1,0 +1,43 @@
+#include <iostream>
+#include <cstdlib>
+#define N 4
+using namespace std;
+int main() {
+  int tmp;
+  int min = 0;
+  int arr[N][N];
+  for(int i =0; i < N;i++){
+    for(int j =0; j < N; j++){
+      arr[i][j] = rand() % 10;
+    }
+  }
+  for(int i = 0; i<N;i++){
+    for(int j = 0; j < N; j++){
+      cout<<arr[i][j]<<" ";
+    }
+    cout<<endl;
+  }
+  cout<<"    "<<endl;
+  for(int i = 0; i < N; i++){
+    for(int j =0; j < N; j++){
+      min = arr[i][j];
+      for(int h = j+1; h < N; h++){
+        if(arr[i][h] > min){
+          min = arr[i][h];
+          tmp = h;
+        }
+      }
+      if(arr[i][j] != min){
+        arr[i][tmp] = arr[i][j];
+        arr[i][j] = min;
+      }
+    }
+  }
+
+  for(int i = 0; i<N;i++){
+    for(int j = 0; j < N; j++){
+      cout<<arr[i][j]<<" ";
+    }
+    cout<<endl;
+  }
+}
