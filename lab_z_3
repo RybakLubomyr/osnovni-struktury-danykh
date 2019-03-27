@@ -13,25 +13,43 @@ int main(){
   int physics_rating[N];
   int GPA[N];
   int date[N][3];
+  //для 0
+  int zalikovka0[N];
+  string last_name0[N];
+  int math_rating0[N];
+  int informatics_rating0[N];
+  int physics_rating0[N];
+  int GPA0[N];
+  int date0[N][3];
+
   for(int i=0; i<N;i++){
     cout<<"Номер заліковки: ";
     cin>> zalikovka[i];
+    zalikovka0[i] = zalikovka[i];
     cout<<"Прізвище: ";
     cin>> last_name[i];
+    last_name0[i] = last_name[i];
     cout<<"Дату народження "<<endl;
     cout<<"День:";
     cin>> date[i][0];
+    date0[i][0] = date[i][0];
     cout<<"Місяць:";
     cin>> date[i][1];
+    date0[i][1] = date[i][1];
     cout<<"Рік:";
     cin>> date[i][2];
+    date0[i][2] = date[i][2];
     cout<<"Оцінка з математики: ";
     cin>> math_rating[i];
+    math_rating0[i] = math_rating[i];
     cout<<"Оцінка з інформатики: ";
     cin>> informatics_rating[i];
+    informatics_rating0[i] = informatics_rating[i];
     cout<<"Оцінка з фізики: ";
     cin>> physics_rating[i];
+    physics_rating0[i] = physics_rating[i];
     GPA[i]=((math_rating[i] + informatics_rating[i] + physics_rating[i]) / 3);
+    GPA0[i] = GPA[i];
     cout<<"Середній бал: "<<GPA[i]<<endl;
   }
   for(int i=0; i<N;i++){
@@ -43,341 +61,349 @@ int main(){
     "Оцінка з фізики: "<<physics_rating[i]<<", "<<
     "Середній бал: "<<GPA[i]<<endl;
   }
-  int key;
-  cout<<"В якому порядку посортувати? (0-в попередньому, 1-впорядкувати за прізвищем, 2-впорядкувати за роком народження, 3-рейтингом) "<<endl;
-  cin>>key; 
-  cout<<key<<endl;
   int vrb;
+  char checkOut = 'n';
+  int check;
   string min;
-  if(key == 0){
-    for(int i=0; i<N;i++){
-      cout<<"Студент"<<endl;
-      cout<<"Номер заліковки: "<<zalikovka[i]<<", "<<"Прізвище: "<<last_name[i]<<", "<<
-      "Дата народження: "<<date[i][0]<<"/"<<date[i][1]<<"/"<<date[i][2]<<", "<<
-      "Оцінка з математики: "<<math_rating[i]<<", "<<
-      "Оцінка з інформатики: "<<informatics_rating[i]<<", "<<
-      "Оцінка з фізики: "<<physics_rating[i]<<", "<<
-      "Середній бал: "<<GPA[i]<<endl;
-    } 
-  } else if(key == 1){
-    //Вибором
-    int tmp;
-    char tab1[80];
-    char tab2[80];
-    for(int i =0; i<N; i++){
-      min = last_name[i];
-      for(int j=i+1; j<N;j++){
-        strcpy(tab1, min.c_str());
-        strcpy(tab2, last_name[j].c_str());
-        if(strcmp(tab1, tab2) > 0){
-          min = last_name[j];
-          tmp = j;
-        }
-        if(min != last_name[i]){
-          //Прізвище
-          last_name[tmp] = last_name[i];
-          last_name[i] = min;
-          //Дата
-          vrb = date[tmp][0];
-          date[tmp][0] = date[i][0];
-          date[i][0] = vrb;
-          vrb = date[tmp][1];
-          date[tmp][1] = date[i][1];
-          date[i][1] = vrb;
-          vrb = date[tmp][2];
-          date[tmp][2] = date[i][2];
-          date[i][2] = vrb;
+  int key;
+  while(checkOut != 'y'){
+    cout<<"В якому порядку посортувати? (0-в попередньому, 1-впорядкувати за прізвищем, 2-впорядкувати за роком народження, 3-рейтингом) "<<endl;
+    cin>>key; 
+    if(key == 0){
+      for(int i=0; i<N;i++){
+        cout<<"Студент"<<endl;
+        cout<<"Номер заліковки: "<<zalikovka0[i]<<", "<<"Прізвище: "<<last_name0[i]<<", "<<
+        "Дата народження: "<<date0[i][0]<<"/"<<date[i][1]<<"/"<<date0[i][2]<<", "<<
+        "Оцінка з математики: "<<math_rating0[i]<<", "<<
+        "Оцінка з інформатики: "<<informatics_rating0[i]<<", "<<
+        "Оцінка з фізики: "<<physics_rating0[i]<<", "<<
+        "Середній бал: "<<GPA0[i]<<endl;
+      } 
+    } else if(key == 1){
+      //Вибором
+      int tmp;
+      char tab1[80];
+      char tab2[80];
+      for(int i =0; i<N; i++){
+        min = last_name[i];
+        for(int j=i+1; j<N;j++){
+          strcpy(tab1, min.c_str());
+          strcpy(tab2, last_name[j].c_str());
+          if(strcmp(tab1, tab2) > 0){
+            min = last_name[j];
+            tmp = j;
+          }
+          if(min != last_name[i]){
+            //Прізвище
+            last_name[tmp] = last_name[i];
+            last_name[i] = min;
+            //Дата
+            vrb = date[tmp][0];
+            date[tmp][0] = date[i][0];
+            date[i][0] = vrb;
+            vrb = date[tmp][1];
+            date[tmp][1] = date[i][1];
+            date[i][1] = vrb;
+            vrb = date[tmp][2];
+            date[tmp][2] = date[i][2];
+            date[i][2] = vrb;
 
-          vrb = zalikovka[tmp];
-          zalikovka[tmp] = zalikovka[i];
+            vrb = zalikovka[tmp];
+            zalikovka[tmp] = zalikovka[i];
+            zalikovka[i] = vrb;
+
+            vrb = math_rating[tmp];
+            math_rating[tmp] = math_rating[i];
+            math_rating[i] = vrb;
+
+            vrb = informatics_rating[tmp];
+            informatics_rating[tmp] = informatics_rating[i];
+            informatics_rating[i] = vrb;
+
+            vrb = physics_rating[tmp];
+            physics_rating[tmp] = physics_rating[i];
+            physics_rating[i] = vrb;
+
+            vrb = GPA[tmp];
+            GPA[tmp] = GPA[i];
+            GPA[i] = vrb;
+          }
+        }
+      }
+    
+      for(int i=0; i<N;i++){
+        cout<<"Студент"<<endl;
+        cout<<"Прізвище: "<<last_name[i]<<", "<<"Номер заліковки: "<<zalikovka[i]<<", "<<
+        "Дата народження: "<<date[i][0]<<"/"<<date[i][1]<<"/"<<date[i][2]<<", "<<
+        "Оцінка з математики: "<<math_rating[i]<<", "<<
+        "Оцінка з інформатики: "<<informatics_rating[i]<<", "<<
+        "Оцінка з фізики: "<<physics_rating[i]<<", "<<
+        "Середній бал: "<<GPA[i]<<endl;
+      } 
+    } else if(key == 2){
+      int q = N/2;
+      for(int i=0,j=N-1;i<q && j >= q; i++,j--){
+        if(date[i][2] > date[j][2]){
+          //Дата
+          vrb = date[i][2];
+          date[i][2] = date[j][2];
+          date[j][2] = vrb;
+          vrb = date[j][0];
+          date[j][0] = date[i][0];
+          date[i][0] = vrb;
+          vrb = date[j][1];
+          date[j][1] = date[i][1];
+          date[i][1] = vrb;
+          
+          //Прізвище
+          min = last_name[j];
+          last_name[j] = last_name[i];
+          last_name[i] = min;
+
+          vrb = zalikovka[j];
+          zalikovka[j] = zalikovka[i];
           zalikovka[i] = vrb;
 
-          vrb = math_rating[tmp];
-          math_rating[tmp] = math_rating[i];
+          vrb = math_rating[j];
+          math_rating[j] = math_rating[i];
           math_rating[i] = vrb;
 
-          vrb = informatics_rating[tmp];
-          informatics_rating[tmp] = informatics_rating[i];
+          vrb = informatics_rating[j];
+          informatics_rating[j] = informatics_rating[i];
           informatics_rating[i] = vrb;
 
-          vrb = physics_rating[tmp];
-          physics_rating[tmp] = physics_rating[i];
+          vrb = physics_rating[j];
+          physics_rating[j] = physics_rating[i];
           physics_rating[i] = vrb;
 
-          vrb = GPA[tmp];
-          GPA[tmp] = GPA[i];
+          vrb = GPA[j];
+          GPA[j] = GPA[i];
           GPA[i] = vrb;
         }
       }
-    }
-  
-    for(int i=0; i<N;i++){
-      cout<<"Студент"<<endl;
-      cout<<"Прізвище: "<<last_name[i]<<", "<<"Номер заліковки: "<<zalikovka[i]<<", "<<
-      "Дата народження: "<<date[i][0]<<"/"<<date[i][1]<<"/"<<date[i][2]<<", "<<
-      "Оцінка з математики: "<<math_rating[i]<<", "<<
-      "Оцінка з інформатики: "<<informatics_rating[i]<<", "<<
-      "Оцінка з фізики: "<<physics_rating[i]<<", "<<
-      "Середній бал: "<<GPA[i]<<endl;
-    } 
-  } else if(key == 2){
-    int q = N/2;
-    for(int i=0,j=N-1;i<q && j >= q; i++,j--){
-      if(date[i][2] > date[j][2]){
-        //Дата
-        vrb = date[i][2];
-        date[i][2] = date[j][2];
-        date[j][2] = vrb;
-        vrb = date[j][0];
-        date[j][0] = date[i][0];
-        date[i][0] = vrb;
-        vrb = date[j][1];
-        date[j][1] = date[i][1];
-        date[i][1] = vrb;
-        
-        //Прізвище
-        min = last_name[j];
-        last_name[j] = last_name[i];
-        last_name[i] = min;
+      for(int i=0; i < N-3;i++){
+        if(date[i][2] > date[i+3][2]){
+          //Дата
+          vrb = date[i][2];
+          date[i][2] = date[i+3][2];
+          date[i+3][2] = vrb;
+          vrb = date[i+3][0];
+          date[i+3][0] = date[i][0];
+          date[i][0] = vrb;
+          vrb = date[i+3][1];
+          date[i+3][1] = date[i][1];
+          date[i][1] = vrb;
+          
+          //Прізвище
+          min = last_name[i+3];
+          last_name[i+3] = last_name[i];
+          last_name[i] = min;
 
-        vrb = zalikovka[j];
-        zalikovka[j] = zalikovka[i];
-        zalikovka[i] = vrb;
+          vrb = zalikovka[i+3];
+          zalikovka[i+3] = zalikovka[i];
+          zalikovka[i] = vrb;
 
-        vrb = math_rating[j];
-        math_rating[j] = math_rating[i];
-        math_rating[i] = vrb;
+          vrb = math_rating[i+3];
+          math_rating[i+3] = math_rating[i];
+          math_rating[i] = vrb;
 
-        vrb = informatics_rating[j];
-        informatics_rating[j] = informatics_rating[i];
-        informatics_rating[i] = vrb;
+          vrb = informatics_rating[i+3];
+          informatics_rating[i+3] = informatics_rating[i];
+          informatics_rating[i] = vrb;
 
-        vrb = physics_rating[j];
-        physics_rating[j] = physics_rating[i];
-        physics_rating[i] = vrb;
+          vrb = physics_rating[i+3];
+          physics_rating[i+3] = physics_rating[i];
+          physics_rating[i] = vrb;
 
-        vrb = GPA[j];
-        GPA[j] = GPA[i];
-        GPA[i] = vrb;
-      }
-    }
-    for(int i=0; i < N-3;i++){
-      if(date[i][2] > date[i+3][2]){
-        //Дата
-        vrb = date[i][2];
-        date[i][2] = date[i+3][2];
-        date[i+3][2] = vrb;
-        vrb = date[i+3][0];
-        date[i+3][0] = date[i][0];
-        date[i][0] = vrb;
-        vrb = date[i+3][1];
-        date[i+3][1] = date[i][1];
-        date[i][1] = vrb;
-        
-        //Прізвище
-        min = last_name[i+3];
-        last_name[i+3] = last_name[i];
-        last_name[i] = min;
-
-        vrb = zalikovka[i+3];
-        zalikovka[i+3] = zalikovka[i];
-        zalikovka[i] = vrb;
-
-        vrb = math_rating[i+3];
-        math_rating[i+3] = math_rating[i];
-        math_rating[i] = vrb;
-
-        vrb = informatics_rating[i+3];
-        informatics_rating[i+3] = informatics_rating[i];
-        informatics_rating[i] = vrb;
-
-        vrb = physics_rating[i+3];
-        physics_rating[i+3] = physics_rating[i];
-        physics_rating[i] = vrb;
-
-        vrb = GPA[i+3];
-        GPA[i+3] = GPA[i];
-        GPA[i] = vrb;
-      }
-    }
-    for(int i=0; i < N-2;i++){
-      if(date[i][2] > date[i+2][2]){
-        //Дата
-        vrb = date[i][2];
-        date[i][2] = date[i+2][2];
-        date[i+2][2] = vrb;
-        vrb = date[i+2][0];
-        date[i+2][0] = date[i][0];
-        date[i][0] = vrb;
-        vrb = date[i+2][1];
-        date[i+2][1] = date[i][1];
-        date[i][1] = vrb;
-        
-        //Прізвище
-        min = last_name[i+2];
-        last_name[i+2] = last_name[i];
-        last_name[i] = min;
-
-        vrb = zalikovka[i+2];
-        zalikovka[i+2] = zalikovka[i];
-        zalikovka[i] = vrb;
-
-        vrb = math_rating[i+2];
-        math_rating[i+2] = math_rating[i];
-        math_rating[i] = vrb;
-
-        vrb = informatics_rating[i+2];
-        informatics_rating[i+2] = informatics_rating[i];
-        informatics_rating[i] = vrb;
-
-        vrb = physics_rating[i+2];
-        physics_rating[i+2] = physics_rating[i];
-        physics_rating[i] = vrb;
-
-        vrb = GPA[i+2];
-        GPA[i+2] = GPA[i];
-        GPA[i] = vrb;
-      }
-    }
-    for(int i=0; i<N-1;i++){
-      if(date[i][2] > date[i+1][2]){
-        //Дата
-        vrb = date[i][2];
-        date[i][2] = date[i+1][2];
-        date[i+1][2] = vrb;
-        vrb = date[i+1][0];
-        date[i+1][0] = date[i][0];
-        date[i][0] = vrb;
-        vrb = date[i+1][1];
-        date[i+1][1] = date[i][1];
-        date[i][1] = vrb;
-        
-        //Прізвище
-        min = last_name[i+1];
-        last_name[i+1] = last_name[i];
-        last_name[i] = min;
-
-        vrb = zalikovka[i+1];
-        zalikovka[i+1] = zalikovka[i];
-        zalikovka[i] = vrb;
-
-        vrb = math_rating[i+1];
-        math_rating[i+1] = math_rating[i];
-        math_rating[i] = vrb;
-
-        vrb = informatics_rating[i+1];
-        informatics_rating[i+1] = informatics_rating[i];
-        informatics_rating[i] = vrb;
-
-        vrb = physics_rating[i+1];
-        physics_rating[i+1] = physics_rating[i];
-        physics_rating[i] = vrb;
-
-        vrb = GPA[i+1];
-        GPA[i+1] = GPA[i];
-        GPA[i] = vrb;
-      }
-    }
-    for(int i=0; i<N;i++){
-      cout<<"Студент"<<endl;
-      cout<<"Дата народження: "<<date[i][0]<<"/"<<date[i][1]<<"/"<<date[i][2]<<", "<<"Номер заліковки: "<<zalikovka[i]<<", "<<"Прізвище: "<<last_name[i]<<", "<<
-      "Оцінка з математики: "<<math_rating[i]<<", "<<
-      "Оцінка з інформатики: "<<informatics_rating[i]<<", "<<
-      "Оцінка з фізики: "<<physics_rating[i]<<", "<<
-      "Середній бал: "<<GPA[i]<<endl;
-    } 
-  } else if(key == 3){
-    int tmp1;
-    int tmp2;
-    int q = sqrt(N);
-    for(int u=0; u<q; u++){
-      for(int i=0,j=N-1;i<N && j>=0;i++,j--){
-        tmp1 = i+1;
-        if(tmp1 != N){
-          if(GPA[i] > GPA[tmp1]){
-            vrb = GPA[i];
-            GPA[i] = GPA[tmp1];
-            GPA[tmp1] = vrb;
-            //Прізвище
-            min = last_name[tmp1];
-            last_name[tmp1] = last_name[i];
-            last_name[i] = min;
-            //Дата
-            vrb = date[tmp1][0];
-            date[tmp1][0] = date[i][0];
-            date[i][0] = vrb;
-            vrb = date[tmp1][1];
-            date[tmp1][1] = date[i][1];
-            date[i][1] = vrb;
-            vrb = date[tmp1][2];
-            date[tmp1][2] = date[i][2];
-            date[i][2] = vrb;
-
-            vrb = zalikovka[tmp1];
-            zalikovka[tmp1] = zalikovka[i];
-            zalikovka[i] = vrb;
-
-            vrb = math_rating[tmp1];
-            math_rating[tmp1] = math_rating[i];
-            math_rating[i] = vrb;
-
-            vrb = informatics_rating[tmp1];
-            informatics_rating[tmp1] = informatics_rating[i];
-            informatics_rating[i] = vrb;
-
-            vrb = physics_rating[tmp1];
-            physics_rating[tmp1] = physics_rating[i];
-            physics_rating[i] = vrb;
-          }
+          vrb = GPA[i+3];
+          GPA[i+3] = GPA[i];
+          GPA[i] = vrb;
         }
-        tmp2 = j-1;
-        if(tmp2 >= 0){
-          if(GPA[j] < GPA[tmp2]){
-            vrb = GPA[j];
-            GPA[j] = GPA[tmp2];
-            GPA[tmp2] = vrb;
-            //Прізвище
-            min = last_name[tmp2];
-            last_name[tmp2] = last_name[j];
-            last_name[j] = min;
-            //Дата
-            vrb = date[tmp2][0];
-            date[tmp2][0] = date[j][0];
-            date[j][0] = vrb;
-            vrb = date[tmp2][1];
-            date[tmp2][1] = date[j][1];
-            date[j][1] = vrb;
-            vrb = date[tmp2][2];
-            date[tmp2][2] = date[j][2];
-            date[j][2] = vrb;
+      }
+      for(int i=0; i < N-2;i++){
+        if(date[i][2] > date[i+2][2]){
+          //Дата
+          vrb = date[i][2];
+          date[i][2] = date[i+2][2];
+          date[i+2][2] = vrb;
+          vrb = date[i+2][0];
+          date[i+2][0] = date[i][0];
+          date[i][0] = vrb;
+          vrb = date[i+2][1];
+          date[i+2][1] = date[i][1];
+          date[i][1] = vrb;
+          
+          //Прізвище
+          min = last_name[i+2];
+          last_name[i+2] = last_name[i];
+          last_name[i] = min;
 
-            vrb = zalikovka[tmp2];
-            zalikovka[tmp2] = zalikovka[j];
-            zalikovka[j] = vrb;
+          vrb = zalikovka[i+2];
+          zalikovka[i+2] = zalikovka[i];
+          zalikovka[i] = vrb;
 
-            vrb = math_rating[tmp2];
-            math_rating[tmp2] = math_rating[j];
-            math_rating[j] = vrb;
+          vrb = math_rating[i+2];
+          math_rating[i+2] = math_rating[i];
+          math_rating[i] = vrb;
 
-            vrb = informatics_rating[tmp2];
-            informatics_rating[tmp2] = informatics_rating[j];
-            informatics_rating[j] = vrb;
+          vrb = informatics_rating[i+2];
+          informatics_rating[i+2] = informatics_rating[i];
+          informatics_rating[i] = vrb;
 
-            vrb = physics_rating[tmp2];
-            physics_rating[tmp2] = physics_rating[j];
-            physics_rating[j] = vrb;
-          }
+          vrb = physics_rating[i+2];
+          physics_rating[i+2] = physics_rating[i];
+          physics_rating[i] = vrb;
+
+          vrb = GPA[i+2];
+          GPA[i+2] = GPA[i];
+          GPA[i] = vrb;
         }
-      }   
-    } 
-    for(int i=0; i<N;i++){
-      cout<<"Студент"<<endl;
-      cout<<"Середній бал: "<<GPA[i]<<", "<<"Номер заліковки: "<<zalikovka[i]<<", "<<"Прізвище: "<<last_name[i]<<", "<<
-      "Дата народження: "<<date[i][0]<<"/"<<date[i][1]<<"/"<<date[i][2]<<", "<<
-      "Оцінка з математики: "<<math_rating[i]<<", "<<
-      "Оцінка з інформатики: "<<informatics_rating[i]<<", "<<
-      "Оцінка з фізики: "<<physics_rating[i]<<", "<<endl;
+      }
+      for(int i=0; i<N-1;i++){
+        if(date[i][2] > date[i+1][2]){
+          //Дата
+          vrb = date[i][2];
+          date[i][2] = date[i+1][2];
+          date[i+1][2] = vrb;
+          vrb = date[i+1][0];
+          date[i+1][0] = date[i][0];
+          date[i][0] = vrb;
+          vrb = date[i+1][1];
+          date[i+1][1] = date[i][1];
+          date[i][1] = vrb;
+          
+          //Прізвище
+          min = last_name[i+1];
+          last_name[i+1] = last_name[i];
+          last_name[i] = min;
+
+          vrb = zalikovka[i+1];
+          zalikovka[i+1] = zalikovka[i];
+          zalikovka[i] = vrb;
+
+          vrb = math_rating[i+1];
+          math_rating[i+1] = math_rating[i];
+          math_rating[i] = vrb;
+
+          vrb = informatics_rating[i+1];
+          informatics_rating[i+1] = informatics_rating[i];
+          informatics_rating[i] = vrb;
+
+          vrb = physics_rating[i+1];
+          physics_rating[i+1] = physics_rating[i];
+          physics_rating[i] = vrb;
+
+          vrb = GPA[i+1];
+          GPA[i+1] = GPA[i];
+          GPA[i] = vrb;
+        }
+      }
+      for(int i=0; i<N;i++){
+        cout<<"Студент"<<endl;
+        cout<<"Дата народження: "<<date[i][0]<<"/"<<date[i][1]<<"/"<<date[i][2]<<", "<<"Номер заліковки: "<<zalikovka[i]<<", "<<"Прізвище: "<<last_name[i]<<", "<<
+        "Оцінка з математики: "<<math_rating[i]<<", "<<
+        "Оцінка з інформатики: "<<informatics_rating[i]<<", "<<
+        "Оцінка з фізики: "<<physics_rating[i]<<", "<<
+        "Середній бал: "<<GPA[i]<<endl;
+      } 
+    } else if(key == 3){
+      int tmp1;
+      int tmp2;
+      int q = sqrt(N);
+      for(int u=0; u<q; u++){
+        for(int i=0,j=N-1;i<N && j>=0;i++,j--){
+          tmp1 = i+1;
+          if(tmp1 != N){
+            if(GPA[i] > GPA[tmp1]){
+              vrb = GPA[i];
+              GPA[i] = GPA[tmp1];
+              GPA[tmp1] = vrb;
+              //Прізвище
+              min = last_name[tmp1];
+              last_name[tmp1] = last_name[i];
+              last_name[i] = min;
+              //Дата
+              vrb = date[tmp1][0];
+              date[tmp1][0] = date[i][0];
+              date[i][0] = vrb;
+              vrb = date[tmp1][1];
+              date[tmp1][1] = date[i][1];
+              date[i][1] = vrb;
+              vrb = date[tmp1][2];
+              date[tmp1][2] = date[i][2];
+              date[i][2] = vrb;
+
+              vrb = zalikovka[tmp1];
+              zalikovka[tmp1] = zalikovka[i];
+              zalikovka[i] = vrb;
+
+              vrb = math_rating[tmp1];
+              math_rating[tmp1] = math_rating[i];
+              math_rating[i] = vrb;
+
+              vrb = informatics_rating[tmp1];
+              informatics_rating[tmp1] = informatics_rating[i];
+              informatics_rating[i] = vrb;
+
+              vrb = physics_rating[tmp1];
+              physics_rating[tmp1] = physics_rating[i];
+              physics_rating[i] = vrb;
+            }
+          }
+          tmp2 = j-1;
+          if(tmp2 >= 0){
+            if(GPA[j] < GPA[tmp2]){
+              vrb = GPA[j];
+              GPA[j] = GPA[tmp2];
+              GPA[tmp2] = vrb;
+              //Прізвище
+              min = last_name[tmp2];
+              last_name[tmp2] = last_name[j];
+              last_name[j] = min;
+              //Дата
+              vrb = date[tmp2][0];
+              date[tmp2][0] = date[j][0];
+              date[j][0] = vrb;
+              vrb = date[tmp2][1];
+              date[tmp2][1] = date[j][1];
+              date[j][1] = vrb;
+              vrb = date[tmp2][2];
+              date[tmp2][2] = date[j][2];
+              date[j][2] = vrb;
+
+              vrb = zalikovka[tmp2];
+              zalikovka[tmp2] = zalikovka[j];
+              zalikovka[j] = vrb;
+
+              vrb = math_rating[tmp2];
+              math_rating[tmp2] = math_rating[j];
+              math_rating[j] = vrb;
+
+              vrb = informatics_rating[tmp2];
+              informatics_rating[tmp2] = informatics_rating[j];
+              informatics_rating[j] = vrb;
+
+              vrb = physics_rating[tmp2];
+              physics_rating[tmp2] = physics_rating[j];
+              physics_rating[j] = vrb;
+            }
+          }
+        }   
+      } 
+      for(int i=0; i<N;i++){
+        cout<<"Студент"<<endl;
+        cout<<"Середній бал: "<<GPA[i]<<", "<<"Номер заліковки: "<<zalikovka[i]<<", "<<"Прізвище: "<<last_name[i]<<", "<<
+        "Дата народження: "<<date[i][0]<<"/"<<date[i][1]<<"/"<<date[i][2]<<", "<<
+        "Оцінка з математики: "<<math_rating[i]<<", "<<
+        "Оцінка з інформатики: "<<informatics_rating[i]<<", "<<
+        "Оцінка з фізики: "<<physics_rating[i]<<", "<<endl;
+      }
     }
-  }
+    cout<<"Закінчити перегляд?(1-так або 2-ні)"<<endl;
+    cin>> check;
+    if(check == 1){
+      checkOut = 'y';
+    }
+  } 
   return 0;
 }
