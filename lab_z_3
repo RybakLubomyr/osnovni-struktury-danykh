@@ -67,6 +67,7 @@ int main(){
   string min;
   int key;
   while(checkOut != 'y'){
+    cout<<endl;
     cout<<"В якому порядку посортувати? (0-в попередньому, 1-впорядкувати за прізвищем, 2-впорядкувати за роком народження, 3-рейтингом) "<<endl;
     cin>>key; 
     if(key == 0){
@@ -399,6 +400,7 @@ int main(){
         "Оцінка з фізики: "<<physics_rating[i]<<", "<<endl;
       }
     }
+    cout<<endl;
     cout<<"Закінчити перегляд?(1-так або 2-ні)"<<endl;
     cin>> check;
     if(check == 1){
