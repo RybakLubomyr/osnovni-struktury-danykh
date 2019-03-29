@@ -38,14 +38,28 @@ int main() {
     cout<<arr[i]<<" "<<endl;
   }
   cout<<max<<" "<<maxStart<<" "<<maxEnd<<endl;
-  //arr.erase(maxStart,maxEnd);
   arr.erase(arr.begin()+maxStart, arr.begin()+maxEnd);
-  for(int i =0; i < arr.size(); i++){
-    if(arr[i]%2 ==1){
-     // arr.insert(arr[i],arr[i]);
+  int size = arr.size();
+  for(int i =size; i >= 0; i--){
+    int j = i;
+    if(arr[i]%2 == 1){
+      arr.insert(arr.begin(),arr[i]);
+      arr.insert(arr.begin(), arr[i]);
+      arr.erase(arr.begin() + i+1);
     }
     cout<<arr[i]<<" "<<endl;
   }
-   
+  cout<<endl;
+  /*for(int i =0; i < arr.size(); i++){
+    if(arr[i]%2 == 1){
+      arr.insert(arr.begin(), arr[i]);
+      arr.erase(arr.begin() + i+1);
+    }
+    cout<<arr[i]<<" "<<endl;
+  }*/
+  cout<<endl;
+  for(int i=0; i <arr.size(); i++){
+    cout<<arr[i]<<" "<<endl;
+  }
   
 }
