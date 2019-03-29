@@ -1,0 +1,51 @@
+#include <iostream>
+#include <cstdlib>
+#include <vector>
+#define N 50
+using namespace std;
+int main() {
+  int sqnc = 0;
+  int max = 0;
+  int start = 0;
+  int end = 0;
+  int maxStart = 0;
+  int maxEnd = 0;
+  char st = 'n';
+  char en = 'n';
+  vector<int> arr(N);
+  for(int i=0; i < N;i++){
+    arr[i] = rand() % N;
+    if(arr[i]%2 == 1){
+      sqnc++;
+      if(st == 'n'){
+        start = i;
+        st='y';
+        en = 'n';
+      }
+    } else {
+      if(en == 'n'){
+        end = i;
+        en = 'y';
+      }
+      if(max < sqnc){
+        max = sqnc;
+        maxStart = start;
+        maxEnd = end;
+      }
+      sqnc = 0;
+      st = 'n';
+    }
+    cout<<arr[i]<<" "<<endl;
+  }
+  cout<<max<<" "<<maxStart<<" "<<maxEnd<<endl;
+  //arr.erase(maxStart,maxEnd);
+  arr.erase(arr.begin()+maxStart, arr.begin()+maxEnd);
+  for(int i =0; i < arr.size(); i++){
+    if(arr[i]%2 ==1){
+     // arr.insert(arr[i],arr[i]);
+    }
+    cout<<arr[i]<<" "<<endl;
+  }
+   
+  
+}
