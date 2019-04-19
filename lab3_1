@@ -1,0 +1,18 @@
+
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+    int a[] = {11,12,13,14,15,16,17,18,19,20,10};
+    int sum = 80;
+    int Max;
+    for(int i = 11; i >= 0; i--){
+        sum = sum - a[i];
+        if(sum < 0){
+            sum += a[i];
+        }
+       Max = sum;
+        cout<<Max<<endl;
+    }
+}
