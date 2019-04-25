@@ -1,0 +1,19 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+int main()
+{
+    int i = 2;
+    int n = 0;
+    cout<<"Введіть число: "; 
+    cin >> n;
+    while (i <=sqrt(n)){
+      if(n % i == 0) {
+        n = n / i;
+        cout<<i<<endl;
+      } else {
+        i = i + 1;
+      }
+    }
+}
