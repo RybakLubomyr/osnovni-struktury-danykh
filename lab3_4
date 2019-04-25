@@ -8,11 +8,11 @@ int main(){
   int arr1[4][2];
   arr1[0][0] = 6;
   arr1[0][1] = 5;
-  arr1[1][0] = 6;
+  arr1[1][0] = 4;
   arr1[1][1] = 1;
-  arr1[2][0] = 6;
+  arr1[2][0] = 4;
   arr1[2][1] = 1;
-  arr1[3][0] = 6;
+  arr1[3][0] = 4;
   arr1[3][1] = 1;
 
   int arr2[4][2];
@@ -47,23 +47,26 @@ int main(){
   }
   int sumNum = 0;
   int sumK = 0;
-  char sumSq = '+';
+  char sumSq;
   for(int i = 0; i < 4; i++){
     if(sumSq == signs2[i] && sumSq == '-'){
       sumNum = sumNum + arr2[i][0];
       sumK = sumK + arr2[i][1];
       sumSq = '-';
+    
     } else if(sumSq != signs2[i]){
       sumNum = sumNum - arr2[i][0];
       sumK = sumK - arr2[i][1];
       sumSq = '-';
+     
     } else {
       sumNum = sumNum + arr2[i][0];
       sumK = sumK + arr2[i][1];
       sumSq = '+';
     } 
   }
-  cout<<sumSq<<sumNum<<"x^"<<sumK;
+
+  cout<<sumNum<<"x^"<<sumK;
 
 
 }
