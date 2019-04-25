@@ -1,0 +1,69 @@
+#include <string>
+#include <iostream>
+#include <cstring>
+#include <cmath>
+using namespace std;
+
+int main(){
+  int arr1[4][2];
+  arr1[0][0] = 6;
+  arr1[0][1] = 5;
+  arr1[1][0] = 6;
+  arr1[1][1] = 1;
+  arr1[2][0] = 6;
+  arr1[2][1] = 1;
+  arr1[3][0] = 6;
+  arr1[3][1] = 1;
+
+  int arr2[4][2];
+
+  char signs1[4];
+  signs1[0] = '+';
+  signs1[1] = '-';
+  signs1[2] = '-';
+  signs1[3] = '+';
+
+  char signs2[4];
+ 
+
+  int j = 0;
+  int u = 2;
+  for(int i = 0; i < 4; i++){
+    arr2[i][0] = arr1[j][0] * arr1[u][0];
+    arr2[i][1] = arr1[j][1] + arr1[u][1]; 
+    if(signs1[j] == signs1[u] && signs1[j] == '-'){
+      signs2[i] = '+';
+    } else if(signs1[j] != signs1[u]){
+      signs2[i] = '-';
+    } else {
+      signs2[i] = '+';
+    }
+    j++;
+    u++; 
+    if(j > 1){
+      j=0;
+      u=2;
+    }
+  }
+  int sumNum = 0;
+  int sumK = 0;
+  char sumSq = '+';
+  for(int i = 0; i < 4; i++){
+    if(sumSq == signs2[i] && sumSq == '-'){
+      sumNum = sumNum + arr2[i][0];
+      sumK = sumK + arr2[i][1];
+      sumSq = '-';
+    } else if(sumSq != signs2[i]){
+      sumNum = sumNum - arr2[i][0];
+      sumK = sumK - arr2[i][1];
+      sumSq = '-';
+    } else {
+      sumNum = sumNum + arr2[i][0];
+      sumK = sumK + arr2[i][1];
+      sumSq = '+';
+    } 
+  }
+  cout<<sumSq<<sumNum<<"x^"<<sumK;
+
+
+}
