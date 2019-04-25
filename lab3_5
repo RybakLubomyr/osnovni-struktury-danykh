@@ -1,0 +1,52 @@
+#include <string>
+#include <iostream>
+#include <cstring>
+#include <cmath>
+
+using namespace std;
+
+int main(){
+  string number1,number2;
+  cout<<"Введіть 1 число: ";
+  cin>> number1;
+  cout<<"Введіть 2 число: ";
+  cin>> number2;  
+  int size_num1 = number1.length();
+  int size_num2 = number2.length();
+  number1.toCharArray(b,2);
+  cout<<size_num1;
+  char tab1[1024];
+  char tab2[1024];
+  strcpy(tab1, number1.c_str()); 
+  strcpy(tab2, number2.c_str());
+
+  int size_a[size_num1];
+
+  cout<<b<<"  "<<tab1[0];
+  for(int i = 0; i < size_num1; i++){
+   
+  }
+  int size_b[size_num2];
+  for(int i = size_num2 - 1; i >= 0; i--){
+    //size_b[i] = tab2[i];
+  }
+  for(int i = 0; i < size_num2; i++){
+    //cout<<size_a[i]<<endl;
+  }
+ 
+/*if (size_a > size_b)
+    length = size_a + 1;
+else
+    length = size_b + 1;
+ 
+for (int i = 0; i < length; ix++)
+{
+    b[i] += a[i]; 
+    b[i + 1] += (b[i] / 10); 
+    b[i] %= 10; 
+}
+if (b[length - 1] == 0)
+    length--;
+
+*/
+}
