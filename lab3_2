@@ -3,32 +3,55 @@
 using namespace std;
 int main()
 {
-    int a[] = {6,2,36,12};
-    int max=0;
+    int arr[] = {4,18,37,12};
+    int nsd=0;
     int tmp;
     char c = 'n';
 
-    for(int i=2; i < 9; i++){
+    for(int i=1; i < 9; i++){
        for(int j = 0; j < 4; j++){
-            if(a[j]%i==0){
+            if(arr[j]%i==0){
                 tmp = i;
             } else {
                 c = 'y';
             }
         }
         if(c == 'n'){
-            max = tmp;
+            nsd = tmp;
         } else {
             c='n';
         }
         
     }
        
-    cout<<max<<endl;
+    cout<<"НСД: "<<nsd<<endl;
     
     int NCK = 0;
-   NCK = a[0] * a[1] * a[2]*a[3] / max;
-       
-    cout<<NCK<<endl;
+    int max = 0;
+    int q = 2;
+    char checkNCK = 'n';
+    char dilytsya = 'y';
+    for(int i = 0;  i< 4; i++){
+      if(max < arr[i]){
+        max = arr[i];
+      }
+    }
+    NCK = max;
+    while(checkNCK == 'n'){
+      dilytsya = 'y';
+      for(int i=0; i < 4; i++){
+        if(NCK%arr[i] != 0){
+          dilytsya ='n';
+          
+        } 
+      }
+      if(dilytsya == 'n'){
+        NCK = max * q;
+        q++;
+      } else {
+        checkNCK = 'y';
+      }
+    }      
+    cout<<"НСК: "<<NCK<<endl;
 
 }
