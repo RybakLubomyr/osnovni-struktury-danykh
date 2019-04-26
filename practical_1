@@ -38,6 +38,6 @@ int main() {
   }
   cout<<arr[number2][1]<<" "<< arr[number1][1]<<endl;
   float centerX=(arr[number2][0] + arr[number1][0])/2;
-  float centerY=(arr[number2][1] + arr[number1][1])/2;
+  float centerY=((float)arr[number2][1] + (float)arr[number1][1])/2;
   cout<<"d: "<<max<<" Центр кола: x-"<<centerX<<" y-"<<centerY<<endl;
 }
