@@ -5,6 +5,7 @@
 
 using namespace std;
 
+
 int main(){
   string number1,number2;
   cout<<"Введіть 1 число: ";
@@ -13,40 +14,111 @@ int main(){
   cin>> number2;  
   int size_num1 = number1.length();
   int size_num2 = number2.length();
-  number1.toCharArray(b,2);
+  //number1.toCharArray(b,2);
   cout<<size_num1;
   char tab1[1024];
   char tab2[1024];
   strcpy(tab1, number1.c_str()); 
   strcpy(tab2, number2.c_str());
 
-  int size_a[size_num1];
+  int a[size_num1];
 
-  cout<<b<<"  "<<tab1[0];
-  for(int i = 0; i < size_num1; i++){
-   
+  cout<<"  "<<tab1[0]<<endl;
+  for (int i = 0, j = size_num1 - 1; (i < size_num1 && j >= 0); i += 1, j -= 1){
+    if(tab1[j] == '9'){
+      a[i] = 9;
+    } else if(tab1[j] == '8'){
+      a[i] = 8;
+    } else if(tab1[j] == '7'){
+      a[i] = 7;
+    } else if(tab1[j] == '6'){
+      a[i] = 6;
+    } else if(tab1[j] == '5'){
+      a[i] = 5;
+    } else if(tab1[j] == '4'){
+      a[i] = 4;
+    } else if(tab1[j] == '3'){
+      a[i] = 3;
+    } else if(tab1[j] == '2'){
+      a[i] = 2;
+    } else if(tab1[j] == '1'){
+      a[i] = 1;
+    } else {
+      a[i] = 0;
+    }
+
+    cout<<a[i]<<endl;
   }
-  int size_b[size_num2];
+  int b[size_num2];
+
   for(int i = size_num2 - 1; i >= 0; i--){
-    //size_b[i] = tab2[i];
-  }
-  for(int i = 0; i < size_num2; i++){
-    //cout<<size_a[i]<<endl;
-  }
- 
-/*if (size_a > size_b)
-    length = size_a + 1;
-else
-    length = size_b + 1;
- 
-for (int i = 0; i < length; ix++)
-{
-    b[i] += a[i]; 
-    b[i + 1] += (b[i] / 10); 
-    b[i] %= 10; 
-}
-if (b[length - 1] == 0)
-    length--;
+    if(tab2[i] == '9'){
+      b[i] = 9;
+    } else if(tab2[i] == '8'){
+      b[i] = 8;
+    } else if(tab2[i] == '7'){
+      b[i] = 7;
+    } else if(tab2[i] == '6'){
+      b[i] = 6;
+    } else if(tab2[i] == '5'){
+      b[i] = 5;
+    } else if(tab2[i] == '4'){
+      b[i] = 4;
+    } else if(tab2[i] == '3'){
+      b[i] = 3;
+    } else if(tab2[i] == '2'){
+      b[i] = 2;
+    } else if(tab2[i] == '1'){
+      b[i] = 1;
+    } else {
+      b[i] = 0;
+    }
 
-*/
-}
+    cout<<b[i]<<endl;
+  }
+  for(int i = size_num2 - 1; i >= 0; i--){
+    if(tab1[i] == '9'){
+      a[i] = 9;
+    } else if(tab1[i] == '8'){
+      a[i] = 8;
+    } else if(tab1[i] == '7'){
+      a[i] = 7;
+    } else if(tab1[i] == '6'){
+      a[i] = 6;
+    } else if(tab1[i] == '5'){
+      a[i] = 5;
+    } else if(tab1[i] == '4'){
+      a[i] = 4;
+    } else if(tab1[i] == '3'){
+      a[i] = 3;
+    } else if(tab1[i] == '2'){
+      a[i] = 2;
+    } else if(tab1[i] == '1'){
+      a[i] = 1;
+    } else {
+      a[i] = 0;
+    }
+
+    cout<<a[i]<<endl;
+  }
+  int length;
+ 
+  if (size_num1 > size_num2){
+    length = size_num1 + 1;
+  } else {
+    length = size_num2 + 1;
+  }
+      
+  cout<<endl;
+  for (int i = 0; i < length; i++)
+  {
+      b[i] += a[i]; 
+      cout<<b[i]<<endl;
+      b[i + 1] += (b[i] / 10); 
+      cout<<b[i]<<endl;
+      b[i] %= 10; 
+      cout<<b[i];
+  }
+  if (b[length - 1] == 0)
+      length--;
+  }
