@@ -1,0 +1,122 @@
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+
+	struct DATA {
+		string str;
+		int year;
+		int rating;
+	};
+	struct NODE {
+		DATA data;
+		NODE *Left;
+		NODE *Right;
+	};
+	void Add(DATA t, NODE* &c);
+	void ShowElement(NODE* c);
+	void ShowTree(NODE* c);
+	int CountElements(NODE* c);
+	void Add(DATA d, NODE* &c) {
+		if (c == NULL) {
+			c = new NODE;
+			c->data = d;
+			c->Left = NULL;
+			c->Right = NULL;
+			return;
+		}
+		if (d.str < c->data.str) {
+			Add(d, c->Left);
+		}
+		else {
+			Add(d, c->Right);
+		}
+	}
+	void ShowElement(NODE* c) {
+		if (!c) {
+			return;
+		}
+		cout.width(10);
+		cout << c->data.str << ", ";
+		cout.width(10);
+		cout << c->data.year << ", ";
+		cout.width(10);
+		cout << c->data.rating << " ";
+		cout << endl;
+	}
+	void ShowTree(NODE* c) {
+		if (c->Left) {
+			ShowTree(c->Left);
+		}
+		ShowElement(c);
+		if (c->Right) {
+			ShowTree(c->Right);
+		}
+	}
+	int CountElements(NODE* c) {
+		int q = 0;
+		if (!q) {
+			return 0;
+		}
+		if (c->Left) {
+			q += CountElements(c->Left);
+		}
+		q++;
+		if (c->Right) {
+			q += CountElements(c->Right);
+		}
+		return q;
+	}
+	void Remove(DATA d, NODE* &c) {
+		if (c != NULL) {
+			cout << "767676";
+			c = new NODE;
+			c->data = d;
+			c->Left = NULL;
+			c->Right = NULL;
+			
+			return;
+		}
+		//Не працює
+		if (c->Left == NULL && c->Right == NULL) {
+			cout << "ytytyt";
+			delete c;
+			return;
+		}
+	}
+
+int main(){
+	DATA t;
+	NODE *T = NULL;
+	int _;
+	float average = 0;
+	int q = 0;
+	while (true) {
+		cout << "BBODUTE DANI (1/0)? ";
+		cin >> _;
+		if (!_) {
+			break;
+		}
+		cout << "PRIZBUCHE:";
+		cin >> t.str;
+		cout << "PIK:";
+		cin >> t.year;
+		cout << "OCINKA:";
+		cin >> t.rating;
+		average += t.rating;
+		q++;
+		Add(t, T);
+	}
+	ShowTree(T);
+	cout << "SEREDNA OCINKA: " << average / q << endl;
+	system("Pause");
+	for (int i = 0; i < q; i++) {
+		Remove(t, T);
+	}
+	
+	ShowTree(T);
+	system("Pause");
+	return 0;
+}
