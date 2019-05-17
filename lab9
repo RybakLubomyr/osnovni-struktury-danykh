@@ -71,18 +71,14 @@ using namespace std;
 	}
 	void Remove(DATA d, NODE* &c) {
 		if (c != NULL) {
-			cout << "767676";
 			c = new NODE;
 			c->data = d;
+			delete c->Left;
 			c->Left = NULL;
+			delete c->Right;
 			c->Right = NULL;
-			
-			return;
-		}
-		//Не працює
-		if (c->Left == NULL && c->Right == NULL) {
-			cout << "ytytyt";
-			delete c;
+			delete c->Left;
+			c = NULL;
 			return;
 		}
 	}
@@ -112,11 +108,8 @@ int main(){
 	ShowTree(T);
 	cout << "SEREDNA OCINKA: " << average / q << endl;
 	system("Pause");
-	for (int i = 0; i < q; i++) {
-		Remove(t, T);
-	}
-	
-	ShowTree(T);
+	Remove(t, T);
+	//ShowTree(T);
 	system("Pause");
 	return 0;
 }
